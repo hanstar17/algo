@@ -1,0 +1,30 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++.exe build active file",
+            "command": "g++ -g ${file} -o ${workspaceFolder}\\build\\ActiveFile.exe",
+            "options": {
+                "cwd": "C:\\cygwin64\\bin"
+            },
+            "dependsOn": ["make build directory"]
+        },
+        {
+            "type": "shell",
+            "label": "make build directory",
+            "command": "If (-not(test-path -d ${workspaceFolder}\\build)) {mkdir ${workspaceFolder}\\build}",
+            "options": {
+                "cwd": "C:\\cygwin64\\bin"
+            },
+        },
+        {
+            "type": "shell",
+            "label": "clean build files",
+            "command": "rm ${workspaceFolder}\\build\\*",
+            "options": {
+                "cwd": "C:\\cygwin64\\bin"
+            },
+        }
+    ],
+    "version": "2.0.0"
+}
