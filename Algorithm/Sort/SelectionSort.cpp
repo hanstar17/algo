@@ -1,8 +1,5 @@
+#include <cstddef>
 #include <algorithm>
-#include <functional>
-#include <iostream>
-#include <stddef.h>
-#include <vector>
 
 namespace alg
 {
@@ -22,6 +19,9 @@ void select_sort(T *array, size_t size, COMP comp)
     }
 }
 } // namespace alg
+
+#include <iostream>
+#include <vector>
 
 namespace
 {
@@ -53,6 +53,7 @@ void sort(T *array, size_t size, COMP comp, bool print)
     }
 }
 } // namespace
+
 
 int main()
 {

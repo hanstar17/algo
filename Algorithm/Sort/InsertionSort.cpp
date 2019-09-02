@@ -1,8 +1,5 @@
-#include <algorithm>
 #include <functional>
-#include <iostream>
 #include <stddef.h>
-#include <vector>
 
 namespace alg
 {
@@ -23,10 +20,13 @@ void insert_sort(T *array, size_t size, COMP comp)
 }
 } // namespace alg
 
+#include <iostream>
+#include <vector>
+
 namespace
 {
 template <typename T>
-void print_list(const T *array, size_t size)
+void print_array(const T *array, size_t size)
 {
     if (size > 0)
     {
@@ -41,10 +41,10 @@ void sort(T *array, size_t size, COMP comp, bool print)
 {
     if (print)
     {
-        print_list(array, size);
+        print_array(array, size);
         alg::insert_sort(array, size, comp);
         std::cout << " -> ";
-        print_list(array, size);
+        print_array(array, size);
         std::cout << std::endl;
     }
     else
