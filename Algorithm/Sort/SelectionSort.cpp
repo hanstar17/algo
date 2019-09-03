@@ -1,8 +1,6 @@
 #include <cstddef>
 #include <algorithm>
 
-namespace alg
-{
 template <typename T, typename COMP>
 void select_sort(T *array, size_t size, COMP comp)
 {
@@ -18,13 +16,8 @@ void select_sort(T *array, size_t size, COMP comp)
             std::swap(array[i], array[best]);
     }
 }
-} // namespace alg
 
 #include <iostream>
-#include <vector>
-
-namespace
-{
 template <typename T>
 void print_array(const T *array, size_t size)
 {
@@ -36,32 +29,14 @@ void print_array(const T *array, size_t size)
     }
 }
 
-template <typename T, typename COMP>
-void sort(T *array, size_t size, COMP comp, bool print)
-{
-    if (print)
-    {
-        print_array(array, size);
-        alg::select_sort(array, size, comp);
-        std::cout << " -> ";
-        print_array(array, size);
-        std::cout << std::endl;
-    }
-    else
-    {
-        alg::select_sort(array, size, comp);
-    }
-}
-} // namespace
-
-
+#include <vector>
 int main()
 {
-    constexpr bool print = true;
-    auto less = [](const auto &l, const auto &r) { return l < r; };
-
     std::vector<int> a = {2, 9, 3, 0, 6, 1, 5, 7, 4, 8};
-    sort(a.data(), a.size(), less, print);
-
+    
+    print_array(a.data(), a.size());
+    select_sort(a.data(), a.size(), [](const auto &l, const auto &r) { return l < r; });
+    std::cout << " -> ";
+    print_array(a.data(), a.size());
     return 0;
 }
