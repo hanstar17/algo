@@ -1,5 +1,4 @@
-#include <cstddef>
-#include <algorithm>
+#include <functional>
 
 template <typename T, typename COMP>
 void merge_sort(T *array, int begin, int end, COMP comp, T *buffer)

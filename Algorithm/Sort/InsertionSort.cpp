@@ -1,5 +1,4 @@
 #include <functional>
-#include <stddef.h>
 
 template <typename T, typename COMP>
 void insert_sort(T *array, size_t size, COMP comp)

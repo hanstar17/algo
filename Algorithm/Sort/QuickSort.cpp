@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <algorithm>
 
 template <typename T, typename COMP, typename PIVOT>
