@@ -24,9 +24,9 @@ for practice.
 * Dequeue
 
 ### List
-* Singly-Linked List
+* [Singly-Linked List](DataStructure/SinglyLinkedList.cpp)
 * Skip List
-* Doubly-Linked List
+* [Doubly-Linked List](DataStructure/DoublyLinkedList.cpp)
 
 ### Tree
 * Trie Tree
