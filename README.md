@@ -10,7 +10,7 @@ for practice.
 
 ### Sort
 * Bucket Sort
-* Heap Sort
+* [Heap Sort](Algorithm/Sort/HeapSort.cpp)
 * [Insertion Sort](Algorithm/Sort/InsertionSort.cpp)
 * [Merge Sort](Algorithm/Sort/MergeSort.cpp)
 * [Selection Sort](Algorithm/Sort/SelectionSort.cpp)
