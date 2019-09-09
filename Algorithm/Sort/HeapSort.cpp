@@ -3,6 +3,7 @@
 
 namespace helper
 {
+    
 template <typename T, typename COMP>
 void BubbleDown(T *array, int i, size_t size, COMP comp)
 {
@@ -37,7 +38,7 @@ void Heapify(T *array, size_t size, COMP comp)
         BubbleDown(array, i, size, comp);
 }
 
-}
+} // namespace helper
 
 template <typename T, typename COMP>
 void MakeHeap(T *array, size_t size, COMP comp)
@@ -62,7 +63,7 @@ void PopHeap(T *array, size_t size, COMP comp)
 template <typename T, typename COMP>
 bool IsHeap(T *array, size_t size, COMP comp)
 {
-    for (int i = size / 2 - 1; i >= 0; --i)
+    for (int i = 0; i < size / 2; ++i)
     {
         int j = i * 2 + 1;
         if (j + 1 < size && comp(array[j + 1], array[j]))
@@ -99,7 +100,7 @@ int main()
 {
     std::vector<int> a = {2, 9, 0, 6, 5, 7, 4};
     auto less = [](const auto &l, const auto &r) { return l < r; };
-    
+
     std::cout << "original: ";
     print_array(a.data(), a.size());
     std::cout << " (" << IsHeap(a.data(), a.size(), less) << ")" << std::endl;
@@ -127,7 +128,6 @@ int main()
     print_array(a.data(), a.size());
     std::cout << " (" << IsHeap(a.data(), a.size(), less) << ")" << std::endl;
 
-    
     a.push_back(8);
     PushHeap(a.data(), a.size(), less);
     std::cout << "push 8: ";
