@@ -87,7 +87,8 @@ public:
     void Pop()
     {
         assert(_size > 0);
-        T *item = static_cast<T *>((void*)(_data + sizeof(T) * _front++));
+        T *item = static_cast<T *>((void*)(_data + sizeof(T) * _front));
+        _front = (_front + 1) % _capacity;
         item->~T();
         --_size;
     }
