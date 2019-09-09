@@ -19,8 +19,8 @@ for practice.
 ## Data Structures
 ### Array
 * Heap
-* Stack
-* Queue
+* [Stack](DataStructure/Stack.cpp)
+* [Queue](DataStructure/Queue.cpp)
 * Dequeue
 
 ### List
