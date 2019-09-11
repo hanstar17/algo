@@ -6,7 +6,7 @@ for practice.
 * A*
 * Cruskal
 * Prim
-* Dijkstra
+* [Dijkstra](Algorithm/Dijkstra.cpp)
 
 ### Sort
 * Bucket Sort
