@@ -33,7 +33,7 @@ std::vector<typename G::VertexIdType> Dijkstra(
             break;
 
         const auto from = step.to;
-        const auto edges = graph.GetEdges(from);
+        const auto edges = graph.GetEdges(from); // better if we have iterator.
         for (const auto &edge : edges)
         {
             if (tracker.find(edge.to) == tracker.end())
