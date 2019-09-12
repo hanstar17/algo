@@ -143,7 +143,7 @@ namespace std
 template <>
 struct hash<ECity>
 {
-    typedef std::underlying_type<ECity>::type underlying_type;
+    using underlying_type = std::underlying_type<ECity>::type;
     size_t operator()(const ECity &value) const
     {
         return std::hash<underlying_type>()(static_cast<underlying_type>(value));
