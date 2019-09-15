@@ -3,7 +3,6 @@
 #include <vector>
 #include <limits>
 
-#include <iostream>
 int MinSwap(const std::vector<int> &as, const std::vector<int> &bs)
 {
     // answer when i = 0
