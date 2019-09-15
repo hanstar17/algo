@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
 
 #include <vector>
+#include <limits>
 
 int MinSwap(const std::vector<int> &as, const std::vector<int> &bs)
 {
@@ -14,28 +15,19 @@ int MinSwap(const std::vector<int> &as, const std::vector<int> &bs)
         const int a = as[i], pa = as[i-1];
         const int b = bs[i], pb = bs[i-1];
 
-        int swap = -1;
-        int noswap = -1;
+        int swap = std::numeric_limits<int>::max();
+        int noswap = std::numeric_limits<int>::max();
         if (pa < a && pb < b) {
-            if (minSwap >= 0)
-                swap = minSwap + 1;
-            if (minNoswap >= 0)
-                noswap = minNoswap;
+            swap = std::min(swap, minSwap + 1);
+            noswap = std::min(noswap, minNoswap);
         }
-        
         if (pb < a && pa < b) {
-            if (minSwap >= 0)
-                noswap = noswap < 0 ? minSwap : std::min(noswap, minSwap);
-            if (minNoswap >= 0)
-                swap = swap < 0 ? minNoswap + 1 : std::min(swap, minNoswap + 1);
+            swap = std::min(swap, minNoswap + 1);
+            noswap = std::min(noswap, minSwap);
         }
         minNoswap = noswap;
         minSwap = swap;
     }
-    if (minNoswap < 0)
-        return minSwap;
-    if (minSwap < 0)
-        return minNoswap;
     return std::min(minNoswap, minSwap);
 }
 
