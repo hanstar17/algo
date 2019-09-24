@@ -4,16 +4,13 @@
 #include <unordered_map>
 
 int NumEqualDominoPairs(std::vector<std::vector<int>>& dominoes) {
+    int num = 0;
     std::unordered_map<int, int> counter;
     for (auto &domino : dominoes) {
         if (domino[0] > domino[1])
             std::swap(domino[0], domino[1]);
-        ++counter[domino[0] * 10 + domino[1]];
+        num += counter[domino[0] * 10 + domino[1]]++;
     }
-    int num = 0;
-    for (const auto &count : counter)
-        num += (count.second * (count.second - 1)) / 2;
-    
     return num;
 }
 
