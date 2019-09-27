@@ -19,28 +19,25 @@ public:
 
 #include <vector>
 #include <unordered_map>
-Node *DeepCopy(Node *head) {
-    if (!head)
-        return nullptr;
-    
-    std::unordered_map<Node *, Node *> map;
-    Node *copyHead = new Node(head->val, head->next, head->random);
-    map[head] = copyHead;
-    head = head->next;
-    while (head) {
-        Node *copy = new Node(head->val, head->next, head->random);
-        map[head] = copy;
-        head = head->next;
-    }
 
-    head = copyHead;
+Node *KeyedPool(std::unordered_map<Node *, Node *> &idMap, Node *key) {
+    if (!key)
+        return nullptr;
+    if (Node *node = idMap[key])
+        return node;
+    return idMap[key] = new Node();
+}
+
+Node *DeepCopy(Node *head) {
+    std::unordered_map<Node *, Node *> map;
+    Node *headKey = head;
     while (head) {
-        head->next = map[head->next];
-        head->random = map[head->random];
+        Node *node = KeyedPool(map, head);
+        *node = Node(head->val, KeyedPool(map, head->next), KeyedPool(map, head->random));
         head = head->next;
     }
     
-    return copyHead;
+    return map[headKey];
 }
 
 #include <iostream>
@@ -63,7 +60,7 @@ int main() {
         int nextVal = copied->next ? copied->next->val : -1;
         int randomVal = copied->random ? copied->random->val : -1;
         std::cout << val << ", " << nextVal << ", " << randomVal << std::endl;
-        
+
         copied = copied->next;
     }
     return 0;
