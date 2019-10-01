@@ -5,9 +5,9 @@
 
 namespace
 {
-    constexpr size_t minSize = 4;
-    constexpr size_t growFactor = 2;
-}
+constexpr size_t minSize = 4;
+constexpr size_t growFactor = 2;
+} // namespace
 
 // didn't use vector as an underlying structure intentionally for practice.
 template <typename T>
@@ -15,10 +15,7 @@ class Queue
 {
 public:
     Queue()
-        : _data(nullptr)
-        , _front(0)
-        , _size(0)
-        , _capacity(0)
+        : _data(nullptr), _front(0), _size(0), _capacity(0)
     {
     }
 
@@ -28,7 +25,7 @@ public:
         {
             for (size_t i = 0; i < _size; ++i)
             {
-                T *item = static_cast<T *>((void*)(_data + sizeof(T) * ((_front + i) % _size)));
+                T *item = static_cast<T *>((void *)(_data + sizeof(T) * ((_front + i) % _size)));
                 item->~T();
             }
             delete[] _data;
@@ -37,14 +34,14 @@ public:
             _capacity = 0;
         }
     }
-    
+
     Queue(const Queue &rhs) = delete;
 
     Queue(Queue &&rhs) = delete;
 
-    Queue& operator=(const Queue &rhs) = delete;
-    
-    Queue& operator=(Queue &&rhs) = delete;
+    Queue &operator=(const Queue &rhs) = delete;
+
+    Queue &operator=(Queue &&rhs) = delete;
 
     size_t GetCount() const
     {
@@ -61,7 +58,7 @@ public:
         if (_size >= _capacity)
             Grow();
 
-        new(_data + sizeof(T) * ((_front + _size++) % _capacity))T{value};
+        new (_data + sizeof(T) * ((_front + _size++) % _capacity)) T{value};
     }
 
     void Push(T &&value)
@@ -69,25 +66,25 @@ public:
         if (_size >= _capacity)
             Grow();
 
-        new(_data + sizeof(T) * ((_front + _size++) % _capacity))T{std::move(value)};
+        new (_data + sizeof(T) * ((_front + _size++) % _capacity)) T{std::move(value)};
     }
 
-    const T & Front() const
+    const T &Front() const
     {
         assert(_size > 0);
         return *static_cast<const T *>(_data + sizeof(T) * _front);
     }
 
-    T & Front()
+    T &Front()
     {
         assert(_size > 0);
-        return *static_cast<T *>((void*)(_data + sizeof(T) * _front));
+        return *static_cast<T *>((void *)(_data + sizeof(T) * _front));
     }
 
     void Pop()
     {
         assert(_size > 0);
-        T *item = static_cast<T *>((void*)(_data + sizeof(T) * _front));
+        T *item = static_cast<T *>((void *)(_data + sizeof(T) * _front));
         _front = (_front + 1) % _capacity;
         item->~T();
         --_size;
@@ -101,8 +98,8 @@ private:
 
         for (size_t i = 0; i < _size; ++i)
         {
-            T *oldItem = static_cast<T *>((void*)(_data + sizeof(T) * ((_front + i) % _size)));
-            new(newData + sizeof(T) * i)T{std::move(*oldItem)};
+            T *oldItem = static_cast<T *>((void *)(_data + sizeof(T) * ((_front + i) % _size)));
+            new (newData + sizeof(T) * i) T{std::move(*oldItem)};
 
             // not necessary for objects that properly implement move semantics, but calling it
             //  should be trivial for those. Destruct it explicitly for objects that aren't trivial
@@ -110,7 +107,7 @@ private:
             oldItem->~T();
         }
 
-        delete[] _data; 
+        delete[] _data;
         _data = newData;
         _front = 0;
     }

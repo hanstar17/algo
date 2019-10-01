@@ -31,7 +31,7 @@ void merge_sort(T *array, int begin, int end, COMP comp, T *buffer)
 template <typename T, typename COMP>
 void merge_sort(T *array, int size, COMP comp)
 {
-    T* buffer = new T[size];
+    T *buffer = new T[size];
     merge_sort(array, 0, size - 1, comp, buffer);
     delete[] buffer;
 }
@@ -52,7 +52,7 @@ void print_array(const T *array, size_t size)
 int main()
 {
     std::vector<int> a = {2, 9, 3, 0, 6, 1, 5, 7, 4, 8};
-    
+
     print_array(a.data(), a.size());
     merge_sort(a.data(), a.size(), [](const auto &l, const auto &r) { return l < r; });
     std::cout << " -> ";

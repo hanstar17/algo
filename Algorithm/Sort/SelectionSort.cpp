@@ -33,7 +33,7 @@ void print_array(const T *array, size_t size)
 int main()
 {
     std::vector<int> a = {2, 9, 3, 0, 6, 1, 5, 7, 4, 8};
-    
+
     print_array(a.data(), a.size());
     select_sort(a.data(), a.size(), [](const auto &l, const auto &r) { return l < r; });
     std::cout << " -> ";

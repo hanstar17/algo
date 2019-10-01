@@ -24,14 +24,14 @@ public:
     {
         Append(list);
     }
-    
+
     SinglyLinkedList(const SinglyLinkedList &rhs) = delete;
 
     SinglyLinkedList(SinglyLinkedList &&rhs) = delete;
 
-    SinglyLinkedList& operator=(const SinglyLinkedList &rhs) = delete;
-    
-    SinglyLinkedList& operator=(SinglyLinkedList &&rhs) = delete;
+    SinglyLinkedList &operator=(const SinglyLinkedList &rhs) = delete;
+
+    SinglyLinkedList &operator=(SinglyLinkedList &&rhs) = delete;
 
     ~SinglyLinkedList()
     {
@@ -45,7 +45,6 @@ public:
         _count = 0;
     }
 
-
     bool IsEmpty() const { return _count == 0; }
 
     size_t GetCount() const { return _count; }
@@ -53,7 +52,6 @@ public:
     const Node *GetHead() const { return _head; }
 
     Node *GetHead() { return _head; }
-
 
     void Append(std::initializer_list<T> list)
     {

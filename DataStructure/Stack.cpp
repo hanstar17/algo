@@ -24,12 +24,12 @@ public:
         array.push_back(value);
     }
 
-    const T & Top() const
+    const T &Top() const
     {
         return array.back();
     }
 
-    T & Top()
+    T &Top()
     {
         return array.back();
     }

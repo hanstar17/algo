@@ -7,10 +7,11 @@ template <typename T>
 class DoublyLinkedList
 {
     using ValueType = T;
+
 public:
     struct Node
     {
-        ValueType value;        
+        ValueType value;
         Node *prev = nullptr;
         Node *next = nullptr;
     };
@@ -21,7 +22,7 @@ public:
         using PointerType = PT;
 
     public:
-        Iterator(Node* node)
+        Iterator(Node *node)
             : _node(node)
         {
         }
@@ -43,7 +44,7 @@ public:
         {
             return _node == rhs._node;
         }
-        
+
         Iterator &operator++()
         {
             assert(_node);
@@ -72,7 +73,7 @@ public:
             if (value < 0)
                 return (*this) -= -value;
 
-            while(value-- > 0)
+            while (value-- > 0)
                 ++*this;
             return *this;
         }
@@ -83,7 +84,7 @@ public:
             if (value < 0)
                 return (*this) += -value;
 
-            while(value-- > 0)
+            while (value-- > 0)
                 --*this;
             return *this;
         }
@@ -93,9 +94,9 @@ public:
         PointerType *operator->() { return &_node->value; }
 
         operator bool() const { return _node != nullptr; }
-        
+
     private:
-        Node* _node;
+        Node *_node;
     };
 
     using IteratorType = Iterator<ValueType>;
@@ -116,7 +117,7 @@ public:
     DoublyLinkedList(const DoublyLinkedList<ValueType> &rhs)
         : _head(nullptr), _tail(nullptr), _count(0)
     {
-        for (const Node* curr = rhs._head; curr; curr = curr->next)
+        for (const Node *curr = rhs._head; curr; curr = curr->next)
             Append(curr->value);
     }
 
@@ -128,18 +129,18 @@ public:
         rhs._count = 0;
     }
 
-    DoublyLinkedList& operator=(const DoublyLinkedList &rhs)
+    DoublyLinkedList &operator=(const DoublyLinkedList &rhs)
     {
         if (this != &rhs)
         {
             Clear();
-            for (const Node* curr = _head; curr; curr = curr->next)
+            for (const Node *curr = _head; curr; curr = curr->next)
                 Append(curr->value);
         }
         return *this;
     }
 
-    DoublyLinkedList& operator=(DoublyLinkedList &&rhs)
+    DoublyLinkedList &operator=(DoublyLinkedList &&rhs)
     {
         if (this != &rhs)
         {
@@ -162,7 +163,7 @@ public:
     bool IsEmpty() const { return _count == 0; }
 
     size_t GetCount() const { return _count; }
-    
+
     IteratorType Begin() { return IteratorType(_head); }
 
     ConstIteratorType Begin() const { return ConstIteratorType(_head); }
@@ -256,7 +257,7 @@ private:
         ++_count;
     }
 
-    Node* GetNode(int index)
+    Node *GetNode(int index)
     {
         if (index < _count / 2)
         {

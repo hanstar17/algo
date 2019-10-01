@@ -3,7 +3,7 @@
 
 namespace helper
 {
-    
+
 template <typename T, typename COMP>
 void BubbleDown(T *array, int i, size_t size, COMP comp)
 {
