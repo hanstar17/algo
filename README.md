@@ -3,10 +3,9 @@ for practice.
 
 ## Algorithms
 ### Graph
-* A*
-* Cruskal
-* Prim
-* [Dijkstra](Algorithm/Dijkstra.cpp)
+* [Cruskal](Algorithm/Graph/Cruskal.cpp)
+* [Prim](Algorithm/Graph/Prim.cpp)
+* [Dijkstra](Algorithm/Graph/Dijkstra.cpp)
 
 ### Sort
 * Bucket Sort
@@ -18,7 +17,6 @@ for practice.
 
 ## Data Structures
 ### Array
-* Heap
 * [Stack](DataStructure/Stack.cpp)
 * [Queue](DataStructure/Queue.cpp)
 * Dequeue
