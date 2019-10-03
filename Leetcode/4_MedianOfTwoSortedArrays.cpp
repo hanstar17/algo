@@ -1,10 +1,16 @@
+// Time Complexity: O(log min(m, n))
+// Idea: Find a boundary in a shorter list, which can be used to deduce 
+//       the other boundary in the other list.
+//       Check if the left parts of boundaries are smaller than/equal to
+//       the right parts.
+
 #include <vector>
 #include <limits>
 // index calc test
-//   0, 1, 2, 3 (4)
-//   -> 0 + 4 / 2 = 2
-//   0, 1, 2 (3)
-//   -> 0 + 3 / 2 = 1
+//   0, 1, 2, 3 (len: 4)
+//   -> (0 + 4) / 2 = 2
+//   0, 1, 2 (len: 3)
+//   -> (0 + 3) / 2 = 1
 
 // calculate the boundary of the other one
 // if m == 2, n == 3, m + n == odd
