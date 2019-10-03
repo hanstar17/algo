@@ -25,7 +25,7 @@ double findMedianSortedArrays(const std::vector<int> &n1, const std::vector<int>
     const int c3 = c1 + c2;
     const bool odd = c3 % 2;
     int start = 0;
-    int end = c1 + 1; // inc a boundary to represent everything on the left side.
+    int end = c1 + 1; // inc a boundary to represent a case where everything is on the left side.
     while (start < end)
     {
         const int b1 = (start + end) / 2;

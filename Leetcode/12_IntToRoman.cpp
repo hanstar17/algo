@@ -8,25 +8,23 @@ int digitToRoman(int digit, char one, char five, char ten, int i, char buffer[])
     // 3,2,1,0 = d(one)
     if (digit == 9)
     {
-        buffer[i++] = ten;
         buffer[i++] = one;
+        buffer[i++] = ten;
+        digit = 0;
     }
     else if (digit == 4)
     {
-        buffer[i++] = five;
         buffer[i++] = one;
+        buffer[i++] = five;
+        digit = 0;
     }
     else if (digit >= 5)
     {
-        while (digit-- > 5)
-            buffer[i++] = one;
         buffer[i++] = five;
+        digit -= 5;
     }
-    else
-    {
-        while (digit-- > 0)
-            buffer[i++] = one;
-    }
+    while (digit-- > 0)
+        buffer[i++] = one;
     return i;
 }
 std::string intToRoman(int num)
