@@ -3,7 +3,7 @@ for practice.
 
 ## Algorithms
 ### Graph
-* [Cruskal](Algorithm/Graph/Cruskal.cpp)
+* [Kruskal](Algorithm/Graph/Kruskal.cpp)
 * [Prim](Algorithm/Graph/Prim.cpp)
 * [Dijkstra](Algorithm/Graph/Dijkstra.cpp)
 
